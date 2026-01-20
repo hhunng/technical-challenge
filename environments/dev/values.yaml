@@ -1,12 +1,8 @@
-# Development Environment Configuration
-
-# Project Configuration
 project:
-  name: caladan
+  name: TechnicalChallenge
   environment: dev
-  region: us-east-1
+  region: ap-southeast-1
 
-# Network Configuration
 network:
   vpc_cidr: "10.0.0.0/16"
   private_subnets:
@@ -15,19 +11,15 @@ network:
     - cidr: "10.0.2.0/24"
       az: "us-east-1b"
 
-# Compute Configuration
 compute:
-  instance_type: t3.micro  # Small instance for dev
+  instance_type: t3.micro 
 
-# State Configuration
 state:
-  bucket: caladan-terraform-state
+  bucket: s3-apse1-shared-terraform-state
 
-# IAM Role for Terraform execution (Dev Account)
 iam:
-  role_arn: "arn:aws:iam::111111111111:role/TerraformExecutionRole"  # Replace with dev account ID
+  role_arn: "arn:aws:iam::261093894796:role/iam-apse1-dev-terraform-build" 
 
-# Common Tags
 tags:
   ManagedBy: Terraform
   Owner: DevOps

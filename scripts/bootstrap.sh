@@ -5,7 +5,7 @@
 
 set -e
 
-BUCKET_NAME="s3-apse1-shared-terraform-state"
+BUCKET_NAME="caladan-terraform-state"
 REGION="ap-southeast-1"
 
 echo "Creating S3 bucket for Terraform state..."

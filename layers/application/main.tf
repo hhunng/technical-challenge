@@ -1,25 +1,3 @@
-terraform {
-  required_version = ">= 1.5.0"
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-# Variable for environment selection
-variable "environment" {
-  description = "Environment to deploy (dev, staging, prod)"
-  type        = string
-  
-  validation {
-    condition     = contains(["dev", "staging", "prod"], var.environment)
-    error_message = "Environment must be dev, staging, or prod."
-  }
-}
-
 # Load configuration from environment-specific values.yaml
 locals {
   # Read and parse environment-specific YAML configuration file

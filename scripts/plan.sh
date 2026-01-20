@@ -27,7 +27,9 @@ plan_layer() {
     cd "$ROOT/layers/$layer"
     
     if [ ! -d ".terraform" ]; then
-        terraform init -backend-config=../../environments/$ENV/backend-config.tfvars
+        terraform init \
+            -backend-config=../../environments/$ENV/backend-config.tfvars \
+            -backend-config="key=$ENV/$layer/terraform.tfstate"
     fi
     
     terraform plan -var="environment=$ENV"

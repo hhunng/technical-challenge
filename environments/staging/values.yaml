@@ -21,7 +21,7 @@ compute:
 
 # State Configuration
 state:
-  bucket: caladan-terraform-state
+  bucket: s3-apse1-shared-terraform-state
 
 # IAM Role for Terraform execution (Staging Account)
 iam:

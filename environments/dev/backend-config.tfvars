@@ -1,7 +1,4 @@
-# Usage: terraform init -backend-config=../../environments/dev/backend-config.tfvars
-
-bucket  = "caladan-terraform-state"
-key     = "dev/foundation/terraform.tfstate"
+bucket  = "s3-apse1-shared-terraform-state"
 region  = "ap-southeast-1"
 encrypt = true
 
