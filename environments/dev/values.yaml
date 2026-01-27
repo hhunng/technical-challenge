@@ -7,9 +7,9 @@ network:
   vpc_cidr: "10.0.0.0/16"
   private_subnets:
     - cidr: "10.0.1.0/24"
-      az: "us-east-1a"
+      az: "ap-southeast-1a"
     - cidr: "10.0.2.0/24"
-      az: "us-east-1b"
+      az: "ap-southeast-1b"
 
 compute:
   instance_type: t3.micro 

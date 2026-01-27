@@ -31,6 +31,29 @@ resource "aws_iam_role_policy_attachment" "ssm_managed_instance_core" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
+# S3 access policy for deployment packages
+resource "aws_iam_role_policy" "s3_deployment_access" {
+  name_prefix = "${var.project_name}-${var.environment}-s3-deployment-"
+  role        = aws_iam_role.ec2_ssm.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:ListBucket"
+        ]
+        Resource = [
+          "arn:aws:s3:::s3-apse1-shared-terraform-state",
+          "arn:aws:s3:::s3-apse1-shared-terraform-state/*"
+        ]
+      }
+    ]
+  })
+}
+
 # Instance Profile for EC2
 resource "aws_iam_instance_profile" "ec2_ssm" {
   name_prefix = "${var.project_name}-${var.environment}-ec2-ssm-"

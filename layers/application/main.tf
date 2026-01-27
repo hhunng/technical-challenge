@@ -45,6 +45,7 @@ module "ec2_instance_1" {
   subnet_id                 = local.private_subnet_ids[0]
   security_group_ids        = [local.ec2_security_group_id]
   iam_instance_profile_name = local.instance_profile_name
+  key_name                  = "cassandra-key"
   common_tags               = local.common_tags
 }
 
@@ -58,5 +59,6 @@ module "ec2_instance_2" {
   subnet_id                 = local.private_subnet_ids[1]
   security_group_ids        = [local.ec2_security_group_id]
   iam_instance_profile_name = local.instance_profile_name
+  key_name                  = "cassandra-key"
   common_tags               = local.common_tags
 }

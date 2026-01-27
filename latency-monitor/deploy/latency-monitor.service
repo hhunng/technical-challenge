@@ -1,0 +1,29 @@
+[Unit]
+Description=Network Latency Monitor
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/opt/latency-monitor
+Environment="TARGET_HOST=REPLACE_WITH_TARGET_IP"
+Environment="TARGET_PORT=22"
+Environment="RATE_PER_SECOND=10"
+Environment="SERVER_PORT=8080"
+ExecStart=/usr/bin/java -jar /opt/latency-monitor/latency-monitor.jar
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=latency-monitor
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/latency-monitor
+
+[Install]
+WantedBy=multi-user.target

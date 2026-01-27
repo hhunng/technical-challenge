@@ -35,6 +35,12 @@ variable "iam_instance_profile_name" {
   type        = string
 }
 
+variable "key_name" {
+  description = "Name of the SSH key pair"
+  type        = string
+  default     = ""
+}
+
 variable "root_volume_size" {
   description = "Size of the root volume in GB"
   type        = number
